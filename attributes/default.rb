@@ -24,3 +24,4 @@ default['crowd']['tarball']="atlassian-crowd-#{node['crowd']['version']}.tar.gz"
 default['crowd']['url']="http://www.atlassian.com/software/crowd/downloads/binary/#{node['crowd']['tarball']}"
 
 default['crowd']['datadir']="/var/crowd-home"
+default['crowd']['env'] = ['CATALINA_PID="$CATALINA_HOME/work/catalina.pid"']

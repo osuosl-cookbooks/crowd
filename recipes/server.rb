@@ -105,8 +105,10 @@ template "/etc/init.d/crowd" do
   mode  00755
   action :create
   variables(
-    :crowd_install_dir => node['crowd']['homedir']
+    :crowd_install_dir => node['crowd']['homedir'],
+    :crowd_env => node['crowd']['env']
   )
+  notifies :restart, 'service[crowd]'
 end
 
 service "crowd" do
