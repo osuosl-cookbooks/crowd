@@ -8,7 +8,10 @@
  
 RUN_AS_USER=crowd
 CATALINA_HOME=<%= @crowd_install_dir %>/apache-tomcat
-export CATALINA_PID="$CATALINA_HOME/work/catalina.pid"
+#export CATALINA_PID="$CATALINA_HOME/work/catalina.pid"
+<% @crowd_env.each do |e| %>
+export <%= e %>
+<% end %>
  
 start() {
         echo "Starting Crowd: "
