@@ -19,15 +19,15 @@
 
 ::Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
 
-include_recipe "postgresql::server"
-include_recipe "database::postgresql"
+include_recipe 'postgresql::server'
+include_recipe 'database::postgresql'
 
 # randomly generate postgres password
 node.set_unless['crowd']['local_database']['password'] = secure_password
 node.save unless Chef::Config['solo']
 
 # Assume we're running the crowd server locally
-postgresql_connection_info = {:host => "localhost", :username => "postgres", :password => node['postgresql']['password']['postgres']}
+postgresql_connection_info = { host: 'localhost', username: 'postgres', password: node['postgresql']['password']['postgres'] }
 
 postgresql_database_user 'crowd' do
   connection postgresql_connection_info

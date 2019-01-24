@@ -11,8 +11,8 @@ describe 'crowd::local_database' do
       end
 
       before do
-        stub_command("ls /var/lib/pgsql/8.4/data/recovery.conf").and_return(true)
-        stub_command("ls /var/lib/pgsql/9.2/data/recovery.conf").and_return(true)
+        stub_command('ls /var/lib/pgsql/8.4/data/recovery.conf').and_return(true)
+        stub_command('ls /var/lib/pgsql/9.2/data/recovery.conf').and_return(true)
       end
 
       it 'converges successfully' do
@@ -22,9 +22,9 @@ describe 'crowd::local_database' do
       it do
         expect(chef_run).to create_postgresql_database_user('crowd').with(
           connection: {
-            :host => 'localhost',
-            :username => 'postgres',
-            :password => 'somepgpw'
+            host: 'localhost',
+            username: 'postgres',
+            password: 'somepgpw',
           },
           password: 'somecrowdpw'
         )
@@ -33,9 +33,9 @@ describe 'crowd::local_database' do
       it do
         expect(chef_run).to create_postgresql_database('crowd').with(
           connection: {
-            :host => 'localhost',
-            :username => 'postgres',
-            :password => 'somepgpw'
+            host: 'localhost',
+            username: 'postgres',
+            password: 'somepgpw',
           },
           owner: 'postgres'
         )
@@ -44,9 +44,9 @@ describe 'crowd::local_database' do
       it do
         expect(chef_run).to grant_postgresql_database_user('crowd').with(
           connection: {
-            :host => 'localhost',
-            :username => 'postgres',
-            :password => 'somepgpw'
+            host: 'localhost',
+            username: 'postgres',
+            password: 'somepgpw',
           },
           database_name: 'crowd',
           privileges: [:all]

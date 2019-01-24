@@ -34,7 +34,7 @@ describe 'crowd::server' do
         expect(chef_run).to create_template('somehomedir/crowd-webapp/WEB-INF/classes/crowd-init.properties').with(
           source: 'crowd-init.properties.erb',
           variables: {
-            :crowd_home => 'somedatadir'
+            crowd_home: 'somedatadir',
           },
           owner: 'root',
           group: 'root',
@@ -89,8 +89,8 @@ describe 'crowd::server' do
           group: 'root',
           mode: 00755,
           variables: {
-            :crowd_install_dir => 'somehomedir',
-            :crowd_env => ['CATALINA_PID="$CATALINA_HOME/work/catalina.pid"']
+            crowd_install_dir: 'somehomedir',
+            crowd_env: ['CATALINA_PID="$CATALINA_HOME/work/catalina.pid"'],
           }
         )
       end
@@ -101,13 +101,13 @@ describe 'crowd::server' do
 
       it do
         expect(chef_run).to enable_service('crowd').with(
-          supports: { :restart => true }
+          supports: { restart: true }
         )
       end
 
       it do
         expect(chef_run).to start_service('crowd').with(
-          supports: { :restart => true }
+          supports: { restart: true }
         )
       end
     end
