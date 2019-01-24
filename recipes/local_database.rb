@@ -24,7 +24,6 @@ include_recipe 'database::postgresql'
 
 # randomly generate postgres password
 node.default_unless['crowd']['local_database']['password'] = random_password
-node.save unless Chef::Config['solo']
 
 # Assume we're running the crowd server locally
 postgresql_connection_info = { host: 'localhost', username: 'postgres', password: node['postgresql']['password']['postgres'] }
