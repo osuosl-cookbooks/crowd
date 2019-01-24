@@ -29,7 +29,7 @@ end
 remote_file "#{Chef::Config[:file_cache_path]}/#{node['crowd']['tarball']}" do
   source node['crowd']['url']
   action :nothing
-  notifies :run, resources(execute: 'untar-crowd-tarball'), :immediately
+  notifies :run, 'execute[untar-crowd-tarball]', :immediately
 end
 
 http_request "HEAD #{node['crowd']['url']}" do
@@ -39,7 +39,7 @@ http_request "HEAD #{node['crowd']['url']}" do
   if File.exist?("#{Chef::Config[:file_cache_path]}/#{node['crowd']['tarball']}")
     headers 'If-Modified-Since' => File.mtime("#{Chef::Config[:file_cache_path]}/#{node['crowd']['tarball']}").httpdate
   end
-  notifies :create, resources(remote_file: "#{Chef::Config[:file_cache_path]}/#{node['crowd']['tarball']}"), :immediately
+  notifies :create, "remote_file[#{Chef::Config[:file_cache_path]}/#{node['crowd']['tarball']}]", :immediately
 end
 
 user 'crowd' do
