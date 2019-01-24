@@ -20,7 +20,8 @@ describe 'crowd::local_database' do
       end
 
       it do
-        expect(chef_run).to create_postgresql_database_user('crowd').with(
+        expect(chef_run).to create_postgresql_database_user('create crowd').with(
+          username: 'crowd',
           connection: {
             host: 'localhost',
             username: 'postgres',
@@ -42,7 +43,8 @@ describe 'crowd::local_database' do
       end
 
       it do
-        expect(chef_run).to grant_postgresql_database_user('crowd').with(
+        expect(chef_run).to grant_postgresql_database_user('grant crowd').with(
+          username: 'crowd',
           connection: {
             host: 'localhost',
             username: 'postgres',
