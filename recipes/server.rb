@@ -51,7 +51,19 @@ end
 # The following fixups come from
 # https://confluence.atlassian.com/display/CROWD/Setting+Crowd+to+Run+Automatically+and+Use+an+Unprivileged+System+User+on+UNIX - basically converted that bash script into a Chef recipe
 
-%w(build.sh start_crowd.sh stop_crowd.sh apache-tomcat/bin/catalina.sh apache-tomcat/bin/setenv.sh apache-tomcat/bin/tool-wrapper.sh apache-tomcat/bin/digest.sh apache-tomcat/bin/shutdown.sh apache-tomcat/bin/version.sh apache-tomcat/bin/setclasspath.sh apache-tomcat/bin/startup.sh).each do |s|
+%w(
+  build.sh
+  start_crowd.sh
+  stop_crowd.sh
+  apache-tomcat/bin/catalina.sh
+  apache-tomcat/bin/setenv.sh
+  apache-tomcat/bin/tool-wrapper.sh
+  apache-tomcat/bin/digest.sh
+  apache-tomcat/bin/shutdown.sh
+  apache-tomcat/bin/version.sh
+  apache-tomcat/bin/setclasspath.sh
+  apache-tomcat/bin/startup.sh
+).each do |s|
   file "#{node['crowd']['homedir']}/#{s}" do
     group 'crowd'
     mode  00755
