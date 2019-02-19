@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'crowd::local_database' do
+describe 'crowd_test::local_database' do
   ALL_PLATFORMS.each do |p|
     context "#{p[:platform]} #{p[:version]}" do
       cached(:chef_run) do
