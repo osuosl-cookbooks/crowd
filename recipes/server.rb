@@ -38,8 +38,6 @@ template "#{node['crowd']['homedir']}/crowd-webapp/WEB-INF/classes/crowd-init.pr
   variables(
     crowd_home: node['crowd']['datadir']
   )
-  owner 'root'
-  group 'root'
   mode 00644
   action :create
 end
@@ -84,8 +82,6 @@ end
 
 template '/etc/init.d/crowd' do
   source 'crowd.init.erb'
-  owner 'root'
-  group 'root'
   mode  00755
   action :create
   variables(
