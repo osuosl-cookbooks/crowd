@@ -20,26 +20,10 @@
 include_recipe 'osl-postgresql::client'
 include_recipe 'java::oracle'
 
-execute 'untar-crowd-tarball' do
-  cwd node['crowd']['parentdir']
-  command "tar zxf #{Chef::Config[:file_cache_path]}/#{node['crowd']['tarball']}"
-  action :nothing
-end
-
-remote_file "#{Chef::Config[:file_cache_path]}/#{node['crowd']['tarball']}" do
-  source node['crowd']['url']
-  action :nothing
-  notifies :run, 'execute[untar-crowd-tarball]', :immediately
-end
-
-http_request "HEAD #{node['crowd']['url']}" do
-  message ''
+ark 'atlassian-crowd' do
+  path node['crowd']['parentdir']
   url node['crowd']['url']
-  action :head
-  if File.exist?("#{Chef::Config[:file_cache_path]}/#{node['crowd']['tarball']}")
-    headers 'If-Modified-Since' => File.mtime("#{Chef::Config[:file_cache_path]}/#{node['crowd']['tarball']}").httpdate
-  end
-  notifies :create, "remote_file[#{Chef::Config[:file_cache_path]}/#{node['crowd']['tarball']}]", :immediately
+  action :put
 end
 
 user 'crowd' do
