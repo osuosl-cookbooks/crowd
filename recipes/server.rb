@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-include_recipe 'postgresql::client'
+include_recipe 'osl-postgresql::client'
 include_recipe 'java::oracle'
 
 execute 'untar-crowd-tarball' do

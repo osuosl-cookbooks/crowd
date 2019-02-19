@@ -11,7 +11,7 @@ version          "0.2.1"
 
 depends 'database'
 depends 'java'
-depends 'postgresql', '~> 6.1.3'
+depends 'osl-postgresql'
 depends 'seven_zip', '< 3.0.0'
 
 %w{redhat centos}.each do |os|
