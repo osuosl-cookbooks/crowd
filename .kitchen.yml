@@ -6,6 +6,9 @@ provisioner:
       oracle:
         accept_oracle_download_terms: true
 
+verifier:
+  name: inspec
+
 suites:
   - name: server
     run_list:
