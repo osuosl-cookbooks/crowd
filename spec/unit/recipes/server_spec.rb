@@ -16,7 +16,7 @@ describe 'crowd::server' do
       end
 
       it do
-        expect(chef_run).to put_ark('atlassian-crowd').with(
+        expect(chef_run).to put_ark('atlassian-crowd-2.5.2').with(
           url: 'http://someurl.osl',
           path: '/opt'
         )

@@ -20,7 +20,7 @@
 include_recipe 'osl-postgresql::client'
 include_recipe 'java'
 
-ark 'atlassian-crowd' do
+ark "atlassian-crowd-#{node['crowd']['version']}" do
   path node['crowd']['parentdir']
   url node['crowd']['url']
   action :put
