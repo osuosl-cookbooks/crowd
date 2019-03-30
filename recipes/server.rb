@@ -94,7 +94,7 @@ end
 
 template '/etc/init.d/crowd' do
   source 'crowd.init.erb'
-  mode  00755
+  mode 00755
   action :create
   variables(
     crowd_install_dir: node['crowd']['homedir'],
