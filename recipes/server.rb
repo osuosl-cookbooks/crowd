@@ -18,7 +18,7 @@
 #
 
 include_recipe 'osl-postgresql::client'
-include_recipe 'java::oracle'
+include_recipe 'java'
 
 ark 'atlassian-crowd' do
   path node['crowd']['parentdir']
