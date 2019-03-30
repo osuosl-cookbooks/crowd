@@ -36,8 +36,6 @@ describe 'crowd::server' do
           variables: {
             crowd_home: 'somedatadir',
           },
-          owner: 'root',
-          group: 'root',
           mode: 00644
         )
       end
@@ -85,8 +83,6 @@ describe 'crowd::server' do
       it do
         expect(chef_run).to create_template('/etc/init.d/crowd').with(
           source: 'crowd.init.erb',
-          owner: 'root',
-          group: 'root',
           mode: 00755,
           variables: {
             crowd_install_dir: 'somehomedir',
