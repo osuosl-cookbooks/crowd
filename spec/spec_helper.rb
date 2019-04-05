@@ -5,12 +5,12 @@ ChefSpec::Coverage.start! { add_filter 'crowd' }
 
 CENTOS_7 = {
   platform: 'centos',
-  version: '7.2.1511',
+  version: '7.4.1708',
 }.freeze
 
 CENTOS_6 = {
   platform: 'centos',
-  version: '6.8',
+  version: '6.9',
 }.freeze
 
 ALL_PLATFORMS = [
@@ -19,5 +19,5 @@ ALL_PLATFORMS = [
 ].freeze
 
 RSpec.configure do |config|
-  config.log_level = :warn
+  config.log_level = :fatal
 end
