@@ -47,7 +47,19 @@ describe 'crowd::server' do
         )
       end
 
-      %w(build.sh start_crowd.sh stop_crowd.sh apache-tomcat/bin/catalina.sh apache-tomcat/bin/setenv.sh apache-tomcat/bin/tool-wrapper.sh apache-tomcat/bin/digest.sh apache-tomcat/bin/shutdown.sh apache-tomcat/bin/version.sh apache-tomcat/bin/setclasspath.sh apache-tomcat/bin/startup.sh).each do |s|
+      %w(
+        build.sh
+        start_crowd.sh
+        stop_crowd.sh
+        apache-tomcat/bin/catalina.sh
+        apache-tomcat/bin/setenv.sh
+        apache-tomcat/bin/tool-wrapper.sh
+        apache-tomcat/bin/digest.sh
+        apache-tomcat/bin/shutdown.sh
+        apache-tomcat/bin/version.sh
+        apache-tomcat/bin/setclasspath.sh
+        apache-tomcat/bin/startup.sh
+      ).each do |s|
         it do
           expect(chef_run).to create_file("somehomedir/#{s}").with(
             group: 'crowd',
