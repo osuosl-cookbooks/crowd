@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of crowd.
 
+1.0.0 (2019-05-22)
+------------------
+- Chef 13 fixes
+
 ## 0.1.0:
 
 * Initial release of crowd
