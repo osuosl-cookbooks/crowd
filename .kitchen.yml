@@ -1,7 +1,4 @@
 ---
-driver:
-  name: vagrant
-
 provisioner:
   name: chef_solo
   attributes:
@@ -9,10 +6,12 @@ provisioner:
       oracle:
         accept_oracle_download_terms: true
 
-platforms:
-  - name: centos-6.6
+verifier:
+  name: inspec
 
 suites:
   - name: server
     run_list:
       - recipe[crowd::server]
+    excludes:
+      - centos-7

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: crowd
-# Attributes:: default 
+# Attributes:: default
 #
 # Copyright 2012, SecondMarket Labs, LLC
 #
@@ -17,11 +17,11 @@
 # limitations under the License.
 #
 
-default['crowd']['version']='2.5.2'
-default['crowd']['parentdir']='/opt'
-default['crowd']['homedir']="#{node['crowd']['parentdir']}/atlassian-crowd-#{node['crowd']['version']}"
-default['crowd']['tarball']="atlassian-crowd-#{node['crowd']['version']}.tar.gz"
-default['crowd']['url']="http://www.atlassian.com/software/crowd/downloads/binary/#{node['crowd']['tarball']}"
+default['crowd']['version'] = '2.5.2'
+default['crowd']['parentdir'] = '/opt'
+default['crowd']['homedir'] = "#{node['crowd']['parentdir']}/atlassian-crowd-#{node['crowd']['version']}"
+default['crowd']['tarball'] = "atlassian-crowd-#{node['crowd']['version']}.tar.gz"
+default['crowd']['url'] = "http://www.atlassian.com/software/crowd/downloads/binary/#{node['crowd']['tarball']}"
 
-default['crowd']['datadir']="/var/crowd-home"
+default['crowd']['datadir'] = '/var/crowd-home'
 default['crowd']['env'] = ['CATALINA_PID="$CATALINA_HOME/work/catalina.pid"']
