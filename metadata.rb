@@ -13,7 +13,6 @@ depends 'ark'
 depends 'database'
 depends 'java'
 depends 'osl-postgresql'
-depends 'seven_zip', '< 3.0.0'
 
 %w{redhat centos}.each do |os|
   supports os
