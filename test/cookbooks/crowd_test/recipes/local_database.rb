@@ -17,34 +17,20 @@
 # limitations under the License.
 #
 
-::Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
+::Chef::Recipe.send(:include, OpenSSLCookbook::RandomPassword)
 
-include_recipe 'postgresql::server'
-include_recipe 'database::postgresql'
+include_recipe 'osl-postgresql::server'
 
 # randomly generate postgres password
 node.default_unless['crowd']['local_database']['password'] = random_password
 
-# Assume we're running the crowd server locally
-postgresql_connection_info = { host: 'localhost', username: 'postgres', password: node['postgresql']['password']['postgres'] }
-
-postgresql_database_user 'create crowd' do
-  username 'crowd'
-  connection postgresql_connection_info
-  password node['crowd']['local_database']['password']
-  action :create
-end
-
 postgresql_database 'crowd' do
-  connection postgresql_connection_info
   owner 'postgres'
   action :create
 end
 
-postgresql_database_user 'grant crowd' do
-  username 'crowd'
-  connection postgresql_connection_info
-  database_name 'crowd'
-  privileges [:all]
-  action :grant
+postgresql_user 'crowd' do
+  password node['crowd']['local_database']['password']
+  database 'crowd'
+  action :create
 end

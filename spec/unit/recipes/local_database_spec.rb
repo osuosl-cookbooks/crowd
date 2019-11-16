@@ -10,48 +10,25 @@ describe 'crowd_test::local_database' do
         end.converge(described_recipe)
       end
 
-      before do
-        stub_command('ls /var/lib/pgsql/8.4/data/recovery.conf').and_return(true)
-        stub_command('ls /var/lib/pgsql/9.2/data/recovery.conf').and_return(true)
-      end
-
       it 'converges successfully' do
         expect { chef_run }.to_not raise_error
       end
 
       it do
-        expect(chef_run).to create_postgresql_database_user('create crowd').with(
-          username: 'crowd',
-          connection: {
-            host: 'localhost',
-            username: 'postgres',
-            password: 'somepgpw',
-          },
-          password: 'somecrowdpw'
-        )
+        expect(chef_run).to include_recipe('osl-postgresql::server')
       end
 
       it do
         expect(chef_run).to create_postgresql_database('crowd').with(
-          connection: {
-            host: 'localhost',
-            username: 'postgres',
-            password: 'somepgpw',
-          },
           owner: 'postgres'
         )
       end
 
       it do
-        expect(chef_run).to grant_postgresql_database_user('grant crowd').with(
-          username: 'crowd',
-          connection: {
-            host: 'localhost',
-            username: 'postgres',
-            password: 'somepgpw',
-          },
-          database_name: 'crowd',
-          privileges: [:all]
+        expect(chef_run).to create_postgresql_user('crowd').with(
+          create_user: 'crowd',
+          password: 'somecrowdpw',
+          database: 'crowd'
         )
       end
     end
