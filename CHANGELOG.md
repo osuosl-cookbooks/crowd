@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of crowd.
 
+1.1.0 (2019-11-19)
+------------------
+- Upgrade postgresql cookbook
+
 1.0.1 (2019-05-25)
 ------------------
 - Remove seven_zip dependency
