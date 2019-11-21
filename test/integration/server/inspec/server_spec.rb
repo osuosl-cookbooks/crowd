@@ -68,7 +68,7 @@ describe file('/etc/init.d/crowd') do
   it { should exist }
   its('mode') { should cmp '0755' }
   its('content') { should match %r{CATALINA_HOME=/opt/atlassian-crowd-2.5.2} }
-  its('content') { should contain 'export CATALINA_PID="$CATALINA_HOME/work/catalina.pid' }
+  its('content') { should include 'export CATALINA_PID="$CATALINA_HOME/work/catalina.pid' }
 end
 
 describe service('crowd') do
