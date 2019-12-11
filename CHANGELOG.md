@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of crowd.
 
+1.1.1 (2019-12-11)
+------------------
+- Chef 14 post-migration fixes
+
 1.1.0 (2019-11-19)
 ------------------
 - Upgrade postgresql cookbook
